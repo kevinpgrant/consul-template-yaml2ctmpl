@@ -61,7 +61,8 @@ function walkTheArray(&$array, $outerkey) {
 		if (is_array($value)) {
 			walkTheArray($value, $newkey);
 		} else {
-			$value = " {{ consulserver/v1/kv" . $newkey . "/ : \"".$value."\" }}" ;
+
+			$value ="{{ consulserver_name := key_or_default \"" . $newkey . "\" \"".$value."\" }}";
 			$key = $value;
 		}
 	}
